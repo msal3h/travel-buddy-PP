@@ -1,27 +1,29 @@
 {
-  "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "target": "ES6",
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": ["./*"]
-    }
+"compilerOptions": {
+  "lib": ["dom", "dom.iterable", "esnext"],
+  "allowJs": true,
+  "target": "ES6",
+  "skipLibCheck": true,
+  "strict": true,
+  "noEmit": true,
+  "esModuleInterop": true,
+  "module": "esnext",
+  "moduleResolution": "bundler",
+  "resolveJsonModule": true,
+  "isolatedModules": true,
+  "jsx": "preserve",
+  "incremental": true,
+  "baseUrl": ".",                      // ✅ Add this line
+  "paths": {
+    "@/*": ["./*"]                 // ✅ Correct this line
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "plugins": [
+    {
+      "name": "next"
+    }
+  ]
+}
+,
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/Navbar.tsx", "app/components/expense-tracker.jsxcomponents/travel-checklist.jsx", "app/hooks/use-mobile.tsx"],
   "exclude": ["node_modules"]
 }

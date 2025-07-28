@@ -1,20 +1,27 @@
-import type { Metadata } from 'next'
-import './globals.css'
 
-export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+import AuthProvider from "./context/auth-context";
+import { ThemeProvider } from "@mui/material/styles"
+import CssBaseline from "@mui/material/CssBaseline"
+import { theme } from "./theme" // or "../theme" if your theme file is outside `app/`
+
+export const metadata = {
+  title: "Travel Buddy",
+  description: "Organize your travel plans with ease",
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

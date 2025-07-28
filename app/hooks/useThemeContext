@@ -1,0 +1,6 @@
+export function useThemeMode() {
+  return {
+    theme: "light",
+    toggleTheme: () => {}
+  };
+}
