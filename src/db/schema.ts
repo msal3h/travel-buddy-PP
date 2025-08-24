@@ -1,13 +1,12 @@
 // src/db/schema.ts
 import { pgTable, text, timestamp,date, uuid } from "drizzle-orm/pg-core";
+import { z } from "zod";
 
 
-// columnName: columnType("column_name_in_db")[.modifiers()]
-// [.modifiers()] ---> Definition: Modifiers are methods that you chain onto a column definition to give it extra rules or behaviors.
-// ex:  .notNull(), .primaryKey(), .defaultNow()
+
 
 export const users = pgTable("users", {
-  id: uuid("id").primaryKey().defaultRandom(), // ✅ change this
+  id: uuid("id").primaryKey().defaultRandom(), 
   name: text("name").notNull(),
   email: text("email").notNull().unique(),
   createdAt: timestamp("created_at").defaultNow(),
@@ -27,15 +26,14 @@ export const events = pgTable("events", {
 });
 
 export const trips = pgTable("trips", {
-  id: uuid("id").primaryKey().defaultRandom(), // ✅ change this
+  id: uuid("id").primaryKey().defaultRandom(), 
   name: text("name").notNull(),
-  startDate: date("start_date"),       // optional but useful
+  startDate: date("start_date"),      
   endDate: date("end_date"),
   createdAt: timestamp("created_at").defaultNow(),
   userId: uuid("user_id").notNull().references(() => users.id)
   
-  // createdBy: text("created_by").notNull().references(
-  //   () => users.id, // ✅ change this
-  //   { onDelete: "cascade" } // if user is deleted, their trips are also deleted
-  // ) // userId of the creator
+
 });
+
+

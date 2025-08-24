@@ -6,9 +6,11 @@ import { db } from "../../../src/db";
 import { events } from "../../../src/db/schema";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
+import { auth } from "@/auth"
+
 
 // GET /api/events?tripId=123 → Get all events for one trip
-export async function GET(req: Request) {
+export const GET = auth(async (req) => {
   const { searchParams } = new URL(req.url);
   const tripId = searchParams.get("tripId");
 
@@ -18,10 +20,10 @@ export async function GET(req: Request) {
 
   const result = await db.select().from(events).where(eq(events.tripId, tripId));
   return NextResponse.json(result);
-}
+})
 
 // POST /api/events → Create a new event
-export async function POST(req: Request) {
+export const POST = auth(async (req) => {
   const body = await req.json();
   const { title, category, startTime, endTime, location, details, tripId } = body;
 
@@ -40,4 +42,4 @@ export async function POST(req: Request) {
   }).returning();
 
   return NextResponse.json(result[0]);
-}
+})

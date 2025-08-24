@@ -1,18 +1,18 @@
-// "use client"
+"use client"
 
-// import React from "react"
-// import { ThemeProvider, CssBaseline } from "@mui/material"
-// import { theme } from "./theme"
+import React from "react"
+import { ThemeProvider, CssBaseline } from "@mui/material"
+import { theme } from "./theme"
 
-// type Props = {
-//   children: React.ReactNode
-// }
+type Props = {
+  children: React.ReactNode
+}
 
-// export default function ThemeClientProvider({ children }: Props) {
-//   return (
-//     <ThemeProvider theme={theme}>
-//       <CssBaseline />
-//       {children}
-//     </ThemeProvider>
-//   )
-// }
+export default function ThemeClientProvider({ children }: Props) {
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
+  )
+}

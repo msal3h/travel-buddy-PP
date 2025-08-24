@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import SignIn from "@/components/sign-in";
+
 
 export default function TripForm() {
   const [name, setName] = useState("");
@@ -13,24 +15,29 @@ export default function TripForm() {
     const res = await fetch("/api/trip", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-       body: JSON.stringify({ name, startDate, endDate }),
+      body: JSON.stringify({ name, startDate, endDate }),
+        credentials: "include",
     });
-    const data = await res.json();
-    console.log("Trip created:", data); // ✅ Check if trip was created
+ const data = await res.json();
+console.log('Trip creation response:', data);
 
-    if (data.id) {
-    console.log("Redirecting to /trip/" + data.id); // ✅ Confirm redirect is being triggered
-    router.push(`/trip/${data.id}`);
+if (data.id) {
+  router.push(`/trip/${data.id}`);
+} else {
+  alert(data.error || "Trip creation failed");
+
     } // the return part renders first then this 
       // backend saves when user interacts 
 
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Create a New Trip</h2>
-      <input
-        placeholder="Trip Name"
+    <>
+      <SignIn />
+      <form onSubmit={handleSubmit}>
+        <h2>Create a New Trip</h2>
+        <input
+          placeholder="Trip Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
         required
@@ -47,5 +54,11 @@ export default function TripForm() {
       />
       <button type="submit">Create Trip</button>
     </form>
+    </>
   );
 }
+
+{/* <button onClick = {onSmash}>
+        Create trip
+</button> */}
+

@@ -3,7 +3,7 @@ import {getUserById} from "@/lib/getUser";
 import { getTripByUserId } from "@/lib/getTbyID";
 
 export default async function UserPage({params} : {params:{userId: string} }){
-    const {userId} = await params;
+    const {userId} =  params;
 
     const user = await getUserById(userId);
 

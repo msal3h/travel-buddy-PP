@@ -4,7 +4,7 @@ import { getTripById } from "@/lib/getTrip"; //imports data fetching function
 import HomePage from "@/components/homepage"; //imports ui for trip so the information can be displayed
 
 export default async function TripPage({ params }: { params: { tripId: string } }) {
-  const {tripId} = await params
+  const {tripId} =  params
   const trip = await getTripById(tripId);
   if (!trip) return <div>Trip not found</div>;
 

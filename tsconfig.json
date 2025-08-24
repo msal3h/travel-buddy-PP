@@ -13,9 +13,9 @@
   "isolatedModules": true,
   "jsx": "preserve",
   "incremental": true,
-  "baseUrl": ".",                      // ✅ Add this line
+  "baseUrl": ".",                      
   "paths": {
-    "@/*": ["./*"]                 // ✅ Correct this line
+    "@/*": ["./*"]                 
   },
   "plugins": [
     {
@@ -24,6 +24,6 @@
   ]
 }
 ,
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/Navbar.tsx", "app/components/expense-tracker.jsxcomponents/travel-checklist.jsx", "app/hooks/use-mobile.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/Navbar.tsx", "app/components/expense-tracker.jsxcomponents/travel-checklist.jsx", "app/hooks/use-mobile.tsx", "auth.ts"],
   "exclude": ["node_modules"]
 }

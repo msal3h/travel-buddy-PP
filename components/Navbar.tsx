@@ -5,6 +5,7 @@ import {
   Settings,
   Person
 } from '@mui/icons-material';
+import {Ojuju} from "next/font/google"
 
 function Navbar() {
   return (
@@ -14,15 +15,16 @@ function Navbar() {
             <Avatar sx={{ bgcolor: "primary.main", color: "primary.contrastText" }}>
               <Luggage />
             </Avatar>
-            <Typography variant="h6" component="div" sx={{ fontWeight: 600 }}>
+            <Typography variant="h6" component="div" sx={{ fontWeight: 600, fontFamily:"Ojuju" }}>
               Travel Buddy
             </Typography>
           </Box>
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2, mr: 2 }}>
-            <Button color="inherit">Dashboard</Button>
-            <Button color="inherit">My Trips</Button>
-            <Button color="inherit">Explore</Button>
-            <Button color="inherit">Help</Button>
+            <Button href="/tripform"  > Create trip</Button>
+            <Button >Dashboard</Button>
+            <Button >My Trips</Button>
+            {/* <Button variant="outlined">Explore</Button>
+            <Button variant="outlined">Help</Button> */}
           </Box>
           <IconButton color="inherit">
             <Settings />

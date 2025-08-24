@@ -3,7 +3,7 @@ import { trips } from "../src/db/schema";
 import { eq } from "drizzle-orm";
 
 
-//for server-side code (server → database directly)
+//for server-side code (server => database directly)
 
 export async function getTripById(tripId: string) {
   console.log("tripId in getTripById:", tripId); 

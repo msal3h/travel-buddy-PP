@@ -17,13 +17,29 @@ import {
 } from "@mui/material"
 import { Luggage, Settings, Person, Add, Flight, Home, Place, CreditCard } from "@mui/icons-material"
 import { getCategoryColor } from "../components/utils/categoryColors"
-function TravelTimeline() {
+function TravelTimeline( {
+  tripId,
+  tripName,
+  startDate,
+  endDate,
+  userName,
+  userId,
+  email,
+}: {
+  tripId?: string;
+  tripName?: string;
+  startDate?: string;
+  endDate?: string;
+  userName?: string;
+  userId?: string;
+  email?: string;
+}) {
   const timelineEvents = [
     {
-      day: "Day 1 - April 10",
+      day: `${startDate} - ${endDate}`,
       events: [
         {
-          time: "08:30 AM",
+          time: "8:30 AM",
           title: "Flight to Tokyo",
           icon: <Flight />,
           category: "flight",
