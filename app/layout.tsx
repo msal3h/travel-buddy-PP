@@ -16,31 +16,14 @@ export default function RootLayout({
   children: React.ReactNode // children is any valid react content
 }) {
   return (
-<html lang="en">
+    <html lang="en">
+      <body>
         <Navbar />
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-        {/* <Grid container spacing={6} sx={{ mb: 4 }}>
-          <Grid item md={9} xs={12}>
-           
-          </Grid>
-          <Grid item md={3} xs={12}>
-           
-          </Grid>
-        </Grid> */}
 
-     <head>
-              <link
-          href="https://fonts.googleapis.com/css2?family=Ojuju:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-     </head>
 
-        
-      <body>{children}</body>
-      </Container>
-     
-   
-
- </html>
-  )
+         
+          {children}
+        </body>
+      </html>
+      );
 }

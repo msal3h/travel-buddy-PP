@@ -1,6 +1,6 @@
 
 // app/trip/[tripId]/page.tsx
-import { getTripById } from "@/lib/getTrip"; //imports data fetching function
+import { getTripById } from "@/lib/data"; //imports data fetching function
 import HomePage from "@/components/homepage"; //imports ui for trip so the information can be displayed
 
 export default async function TripPage({ params }: { params: { tripId: string } }) {
@@ -14,6 +14,7 @@ export default async function TripPage({ params }: { params: { tripId: string } 
       tripName={trip.name}
       startDate={trip.startDate ?? undefined}
       endDate={trip.endDate ?? undefined}
+      
     />
   );
 }

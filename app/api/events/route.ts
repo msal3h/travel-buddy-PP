@@ -25,20 +25,56 @@ export const GET = auth(async (req) => {
 // POST /api/events → Create a new event
 export const POST = auth(async (req) => {
   const body = await req.json();
-  const { title, category, startTime, endTime, location, details, tripId } = body;
+  const { title,
+    category,
+    startTime,
+    endTime,
+    location,
+    details,
+    tripId,
+    flightnumber,
+    flightdeparture,
+    flightarrival,
+    flightduration,
+    flightairline,
+    flightnotes,
+    activityname,
+    activitylocation,
+    activitytime,
+    activitynotes,
+    accomodationname,
+    accomodationcheckin,
+    accomodationcheckout,
+    accomodationlocation,
+    accomodationnotes, } = body;
 
   if (!title || !category || !startTime || !tripId) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
   const result = await db.insert(events).values({
-    title,
-    category,
+    tripId,
     startTime: new Date(startTime),
     endTime: endTime ? new Date(endTime) : null,
+    title,
+    category,
     location,
     details,
-    tripId,
+    flightnumber,
+    flightdeparture,
+    flightarrival,
+    flightduration,
+    flightairline,
+    flightnotes,
+    activityname,
+    activitylocation,
+    activitytime,
+    activitynotes,
+    accomodationname,
+    accomodationcheckin,
+    accomodationcheckout,
+    accomodationlocation,
+    accomodationnotes,
   }).returning();
 
   return NextResponse.json(result[0]);

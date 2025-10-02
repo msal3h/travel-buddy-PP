@@ -5,12 +5,7 @@ import { db } from "../../../src/db";
 import { trips } from "../../../src/db/schema";
 import { NextResponse } from "next/server";
 import { auth } from "@/auth"
-// GET  Get all trips
-// export async function GET() {
-//    const allTrips = await db.select().from(trips).orderBy(trips.createdAt);
-//    //asks for all trips then organized by createdAt
-//   return NextResponse.json(trips);
-// }
+
 
 export const GET = auth(async (req) => {
 
@@ -50,7 +45,7 @@ const [trip] = await db.insert(trips).values({
   startDate: startDate || null,
   endDate: endDate || null,
   userId: userINFO
-}).returning({id: trips.id, // ✅ force Drizzle to return id
+}).returning({id: trips.id, 
   name: trips.name,
   startDate: trips.startDate,
   endDate: trips.endDate});

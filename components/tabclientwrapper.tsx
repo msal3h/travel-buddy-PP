@@ -9,15 +9,18 @@ import { TravelChecklist } from "./travel-checklist";
 import { ExpenseTracker } from "./expense-tracker";
 import TravelTimeline from "./traveltimeline";
 
+import { events } from '@/src/db/schema';
+import { getEventsForTrip } from "@/lib/data";
+
 export default function TabClientWrapper() {
   const [tabValue, setTabValue] = useState(0);
-
+  
   return (
     <>
       <TabBar tabValue={tabValue} handleTabChange={(_e, v) => setTabValue(v)} />
 
       <TabPanel value={tabValue} index={0}>
-        <TravelTimeline />
+        <TravelTimeline  />
       </TabPanel>
 
       <TabPanel value={tabValue} index={1}>

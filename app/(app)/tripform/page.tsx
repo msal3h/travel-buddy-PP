@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import SignIn from "@/components/sign-in";
-
+import react from "react";
 
 export default function TripForm() {
   const [name, setName] = useState("");
@@ -19,7 +19,7 @@ export default function TripForm() {
         credentials: "include",
     });
  const data = await res.json();
-console.log('Trip creation response:', data);
+
 
 if (data.id) {
   router.push(`/trip/${data.id}`);
@@ -32,33 +32,42 @@ if (data.id) {
   }
 
   return (
-    <>
-      <SignIn />
-      <form onSubmit={handleSubmit}>
-        <h2>Create a New Trip</h2>
+    <div style={{
+      display: "flex", // to use flexbox(flexible box layout)
+      flexDirection: "column", // to stack children vertically
+      alignItems: "center", // center horizontally
+     justifyContent: "center", // center vertically
+     marginTop: "40px"
+  }}>
+
+      <form onSubmit={handleSubmit} >
+        <h2 style={{ 
+          textAlign: "center"
+        }}>Create a New Trip</h2>
         <input
           placeholder="Trip Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
         required
+      style={{ marginRight: "20px" }}
       />
       <input
         type="date"
         value={startDate}
         onChange={(e) => setStartDate(e.target.value)}
+        style={{marginRight: "20px"}}
       />
       <input
         type="date"
         value={endDate}
         onChange={(e) => setEndDate(e.target.value)}
+          style={{ marginRight: "20px" }}
       />
       <button type="submit">Create Trip</button>
     </form>
-    </>
+    </div>
   );
 }
 
-{/* <button onClick = {onSmash}>
-        Create trip
-</button> */}
+
 
